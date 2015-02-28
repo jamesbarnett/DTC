@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Collections.Generic;
 using Xamarin.Forms;
 
 namespace Dtc
@@ -8,18 +8,7 @@ namespace Dtc
     {
         public App()
         {
-            // The root page of your application
-            MainPage = new ContentPage {
-                Content = new StackLayout {
-                    VerticalOptions = LayoutOptions.Center,
-                    Children = {
-                        new Label {
-                            XAlign = TextAlignment.Center,
-                            Text = "Welcome to Xamarin Forms!"
-                        }
-                    }
-                }
-            };
+            MainPage = new CollectionsPage();
         }
 
         protected override void OnStart()
