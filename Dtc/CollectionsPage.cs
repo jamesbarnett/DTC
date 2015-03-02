@@ -17,13 +17,14 @@ namespace Dtc
 
             var stackLayout = new StackLayout();
 
-            var labels = Catalog.Collections.ConvertAll<Label>(c => new Label { 
-                XAlign = TextAlignment.Center,
-                Text = c.Title
-            });
+            var listView = new ListView
+            {
+                RowHeight = 40
+            };
 
-            labels.ForEach(label => stackLayout.Children.Add(label));
+            listView.ItemsSource = Catalog.Collections.ConvertAll<string>(c => c.Title);
 
+            stackLayout.Children.Add(listView);
             Content = new ScrollView { Content = stackLayout };
         }
     }
