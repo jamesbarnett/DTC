@@ -28,7 +28,7 @@ namespace Dtc
 
             listView.ItemSelected += async(sender, e) => {
                 var selectedCollection = (Collection)e.SelectedItem;
-                await Navigation.PushAsync(new PiecesPage());
+                await Navigation.PushAsync(new PiecesPage(selectedCollection.Pieces));
             };
 
             stackLayout.Children.Add(listView);
