@@ -20,11 +20,13 @@ namespace Dtc
             }
 //            this.BindingContext = piece;
 
-            Content = new StackLayout { 
-                Children = {
-                    new Label { Text = _pieces[0].Title }
-                }
-            };
+            StackLayout stackLayout = new StackLayout();
+            foreach (Piece p in _pieces)
+            {
+                stackLayout.Children.Add(new Label { Text = p.Title });
+            }
+
+            Content = stackLayout;
         }
     }
 }
