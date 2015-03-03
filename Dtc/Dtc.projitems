@@ -11,5 +11,6 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Dtc.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CollectionsPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PiecesPage.cs" />
   </ItemGroup>
 </Project>

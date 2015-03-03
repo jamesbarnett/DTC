@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Linq.Expressions;
 using Xamarin.Forms;
@@ -12,7 +13,6 @@ namespace Dtc
 
         public CollectionsPage()
         {
-            Padding = new Thickness(5, Device.OnPlatform(20, 5, 5), 5, 5);
             Catalog = Catalog.Load();
 
             var stackLayout = new StackLayout();
@@ -22,12 +22,17 @@ namespace Dtc
                 RowHeight = 40
             };
 
-            listView.ItemsSource = Catalog.Collections.ConvertAll<string>(c => c.Title);
+            listView.ItemsSource = Catalog.Collections;
+            listView.ItemTemplate = new DataTemplate(typeof(TextCell));
+            listView.ItemTemplate.SetBinding(TextCell.TextProperty, "Title");
+
+            listView.ItemSelected += async(sender, e) => {
+                var selectedCollection = (Collection)e.SelectedItem;
+                await Navigation.PushAsync(new PiecesPage());
+            };
 
             stackLayout.Children.Add(listView);
             Content = new ScrollView { Content = stackLayout };
         }
     }
 }
-
-

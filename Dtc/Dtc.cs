@@ -8,7 +8,7 @@ namespace Dtc
     {
         public App()
         {
-            MainPage = new CollectionsPage();
+            MainPage = new NavigationPage(new CollectionsPage());
         }
 
         protected override void OnStart()
