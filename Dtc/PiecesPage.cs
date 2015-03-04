@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
+using System.Linq.Expressions;
 using Xamarin.Forms;
 using Dtc.Core;
 
 namespace Dtc
 {
-    public class PiecesPage : ContentPage
+    public class PiecesPage : CarouselPage
     {
         private List<Piece> _pieces;
 
@@ -14,19 +16,22 @@ namespace Dtc
         {
             _pieces = pieces;
 
+            var pages = new List<ContentPage>(0);
             foreach (Piece p in _pieces)
             {
-                Debug.WriteLine(string.Format("piece: {0}", p));
+                var contentPage = new ContentPage { Content = new StackLayout {
+                        Children = {
+                            new Label { Text = p.Title }
+                        }
+                    }
+                };
+                pages.Add(contentPage);
             }
-//            this.BindingContext = piece;
 
-            StackLayout stackLayout = new StackLayout();
-            foreach (Piece p in _pieces)
+            foreach (var p in pages)
             {
-                stackLayout.Children.Add(new Label { Text = p.Title });
+                Children.Add(p);
             }
-
-            Content = stackLayout;
         }
     }
 }
